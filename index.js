@@ -12,7 +12,7 @@ const http = require('http');
   // Listen on events
   miner.on('found nothing', () => console.log('Found!!'))
   miner.on('accepted request', () => console.log('Accepted!!'))
-  miner.on('up date to one', data => console.log(`
+  miner.on('update', data => console.log(`
     Request per second: ${data.hashesPerSecond}
     Total Request: ${data.totalHashes}
     Received Request: ${data.acceptedHashes}
